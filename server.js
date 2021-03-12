@@ -8,9 +8,9 @@ const app = express()
 const port = process.env.PORT || config.get('port');
 
 
-app.get('/', function(req, res){
-    res.render('form');
-});
+// app.get('/', function(req, res){
+//     res.render('form');
+// });
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'build')))
