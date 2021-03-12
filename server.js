@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const app = express()
 
 const port = process.env.PORT || config.get('port');
+const mongodbURL = process.env.MONGODB_URL || config.get('mongoUri')
 
 
 // app.get('/', function(req, res){
@@ -41,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 async function start() {
     try {
-        await mongoose.connect(config.get('mongoUri'), {
+        await mongoose.connect( mongodbURL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
