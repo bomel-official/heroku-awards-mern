@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.engine('pug', require('pug').__express)
 app.set('view engine', 'pug');
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,6 +33,7 @@ app.use('/api/award', require('./routes/award.routes'))
 
 
 // app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 async function start() {
     try {
