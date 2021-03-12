@@ -13,7 +13,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.0",
+    "mongoose": "^5.11.15",
     "multer": "^1.4.2",
     "pug": "^3.0.2",
     "react": "^17.0.1",
@@ -24,7 +24,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node --trace-warnings server.js",
     "server": "nodemon server.js",
     "client": "react-scripts start",
     "client:install": "npm install",
