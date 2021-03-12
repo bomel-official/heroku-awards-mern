@@ -22,7 +22,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "react-scripts start",
     "client:install": "npm install",
