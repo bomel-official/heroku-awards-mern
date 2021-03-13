@@ -21,6 +21,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/award', require('./routes/award.routes'))
 
+app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (process.env.NODE_ENV === 'production') {
