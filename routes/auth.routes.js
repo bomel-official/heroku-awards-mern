@@ -7,6 +7,9 @@ const auth = require('../middleware/auth.middleware')
 const User = require('../models/User')
 const Award = require('../models/Award')
 
+const jwtSecret = process.env.JWTSECRET || config.get('jwtSecret')
+const baseUrl = process.env.BASEURL || config.get('baseUrl')
+
 const router = Router()
 
 const multer  = require('multer')
@@ -89,7 +92,7 @@ router.post(
 
             const token = jwt.sign(
                 { userId: user.id },
-                config.get('jwtSecret'),
+                jwtSecret,
                 { expiresIn: rememberMe ? '30d' : '1h' }
             )
 
@@ -140,7 +143,7 @@ router.post(
                     classNumber,
                     classLetter,
                     classProfile,
-                    avatarPath: config.get('baseUrl') + "/" + req.file.path,
+                    avatarPath: baseUrl + "/" + req.file.path,
                 })
             } else {
                 await User.updateOne({_id: req.user.userId}, {
@@ -202,7 +205,7 @@ router.post(
 
             const token = jwt.sign(
                 { userId: user.id },
-                config.get('jwtSecret'),
+                jwtSecret,
                 { expiresIn: rememberMe ? '30d' : '1h' }
             )
 

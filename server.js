@@ -5,7 +5,7 @@ const config = require('config')
 const mongoose = require('mongoose')
 const app = express()
 
-const port = process.env.PORT || config.get('port');
+const port = process.env.PORT || config.get('port') || 80;
 const mongodbURL = process.env.MONGODB_URL || config.get('mongoUri')
 
 

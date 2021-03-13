@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const config = require('config')
 
+const jwtSecret = process.env.JWTSECRET || config.get('jwtSecret')
+
 const auth =  (req, res, next) => {
     if (req.method === 'OPTIONS') {
         return next()
@@ -13,7 +15,7 @@ const auth =  (req, res, next) => {
             return res.status(401).json({ message: 'Нет авторизации' })
         }
 
-        const decoded = jwt.verify(token, config.get('jwtSecret'))
+        const decoded = jwt.verify(token, jwtSecret)
         req.user = decoded
         next()
 

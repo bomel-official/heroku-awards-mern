@@ -5,6 +5,8 @@ const auth = require('../middleware/auth.middleware')
 const Award = require('../models/Award')
 const User = require('../models/User')
 
+const baseUrl = process.env.BASEURL || config.get('baseUrl')
+
 const multer  = require('multer')
 const storage = multer.diskStorage({ // notice you are calling the multer.diskStorage() method here, not multer()
     destination: function(req, file, cb) {
@@ -49,7 +51,7 @@ router.post(
                 contestDate,
                 contestCity,
                 contestPlace,
-                imagePath: config.get('baseUrl') + "/" + req.file.path,
+                imagePath: baseUrl + "/" + req.file.path,
                 owner: req.user.userId,
                 ownerFullname: user.name + ' ' + user.surname,
                 ownerCity: user.city,
