@@ -12,7 +12,7 @@ const mongodbURL = process.env.MONGODB_URL || config.get('mongoUri')
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'build')))
 
-    app.get('*', (req, res) => {
+    app.get('*', (req, res, next) => {
         if (req.originalUrl.includes('/api/')) {
             return next()
         }
