@@ -1,6 +1,0 @@
-{
-  "port": 80,
-  "jwtSecret": "NuttertoolsZanussi1",
-  "mongoUri": "mongodb+srv://andrey-admin:kpXLrW9k@cluster0.cfkwx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "baseUrl": "https://awards-mern.herokuapp.com"
-}
