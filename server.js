@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
         if (req.originalUrl.includes('/api/')) {
             return next()
         }
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
     })
 }
 app.engine('pug', require('pug').__express)
