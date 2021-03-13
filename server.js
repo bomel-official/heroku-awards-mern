@@ -5,7 +5,7 @@ const config = require('config')
 const mongoose = require('mongoose')
 const app = express()
 
-const port = process.env.PORT || config.get('port') || 80;
+const port = process.env.PORT || config.get('port');
 const mongodbURL = process.env.MONGODB_URL || config.get('mongoUri')
 
 
@@ -22,8 +22,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/award', require('./routes/award.routes'))
 
-
-app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (process.env.NODE_ENV === 'production') {
