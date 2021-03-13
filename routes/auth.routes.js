@@ -164,7 +164,7 @@ router.post(
             res.status(201).json({ userId: req.user.userId })
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова\n' + e })
         }
     }
 )
