@@ -36,6 +36,11 @@ app.use('/api/award', require('./routes/award.routes'))
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 async function start() {
     try {
         await mongoose.connect( mongodbURL, {
