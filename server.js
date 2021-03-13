@@ -11,6 +11,13 @@ const mongodbURL = process.env.MONGODB_URL || config.get('mongoUri')
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'build')))
+
+    app.get('*', (req, res) => {
+        if req.originalUrl.includes('/api/') {
+            return next()
+        }
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
 }
 app.engine('pug', require('pug').__express)
 app.set('view engine', 'pug');
