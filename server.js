@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'build')))
 
     app.get('*', (req, res) => {
-        if req.originalUrl.includes('/api/') {
+        if (req.originalUrl.includes('/api/')) {
             return next()
         }
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
